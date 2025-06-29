@@ -1,0 +1,30 @@
+como instalar o composer
+https://www.hostinger.com/br/tutoriais/como-instalar-e-usar-o-composer
+
+dentro da htdocs tem que executar esse comando
+composer create-project laravel/laravel nome_do_aplicativo 
+
+ajuda do artisan ocomando abaixo mostra uma lista de comandos disponiveis e explica para que serve cada um
+essa CLI permite a criação autmatica de alguns recursos na serie MAKE  
+
+php artisan
+
+o comando abaixo vai cria um servidor local na porta 8000 esse servidor fica dentro da pasta onde o comando 
+foi executado, mas atenção isso só é possivel porque o php está na variável de ambiente desse computador, oque 
+me permite usar a CLI dele a hora que eu precisar em qualquer ponto da maquina. 
+
+php artisan serve
+
+o servidor de desenvolvimento serve para testes então assim que eu parar ele atraves da linha de comando 
+eu não consigo mais usar ele na porta 8000, um servidor de produção não desliga dessa forma ele continua rodando 
+mesmo com o servidor de teste desligado no meu caso o servido principal é o apache que roda a aplicação na 
+pasta htdocs. então parar o servidor atisan não vai desligar ele.
+
+
+
+
+
+
+
+
+
