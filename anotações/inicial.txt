@@ -20,6 +20,62 @@ eu não consigo mais usar ele na porta 8000, um servidor de produção não desl
 mesmo com o servidor de teste desligado no meu caso o servido principal é o apache que roda a aplicação na 
 pasta htdocs. então parar o servidor atisan não vai desligar ele.
 
+mapa de execução 
+
+   1 - primeiro o php entra na pasta public no arquivo index e ele carrega o framework que chama os recursos dele pra começar a execução 
+   2 - o framework que foi acionado acessa o aruivo web.php e carrega as rotas e espera a requisição.
+   3 - o usuario faz a requisição pra rota "/"
+   4 - isso aciona a função de call back anonima que está dentro da rota , depois essa função retorna a função view
+   5 - a função view chama o blade e o blade encontra o arquivo de view e mostra ele para o usuário 
+
+
+   as rotas fican no arquivo web.php no caso da rota que ja esta definida ela mostra uma view "Welcome"
+   essa view esta nmo caminho resources/views  todas as views salvas devem ser nomeadas com e extenção 
+   ".blade.php" para que a view engine "blade" saiba que se trata de uma view e ele tem que mostrar ela.
+
+   A Route é uma classe que tem os metodos de requisição 
+   
+   get 
+   put 
+   delete
+   path 
+   post
+   any
+   redirect
+   resource
+   match   
+
+   Até aqui eu vi que eles recebem 2 parametros
+
+   1 é o endereço da rota
+   2 é a função que será executada quando essa rota for acionada que pode ser qualquer coisa desde 
+     retornar uma view até fazer a alguma consulta.
+
+Controllers 
+
+   O artisan e capaz de gerar codigos prontos então eu usei ele pra fazer um controller de teste 
+   a linha de comando abaixo cria um controller na pasta http/controllers
+
+   php artisan make: controller Teste
+
+   Ele criou uma classe teste que estende a classe Controller 
+
+   class Teste extends Controller
+    {
+        //
+    }
+    
+     
+
+
+
+    
+
+   
+  
+
+
+
 
 
 
