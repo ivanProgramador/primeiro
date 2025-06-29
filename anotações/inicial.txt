@@ -64,6 +64,9 @@ Controllers
     {
         //
     }
+
+  integrando o Botstrap no Laravel 
+   
     
      
 

@@ -3,4 +3,4 @@
     <input type="password" name="b" id="">
     <input type="submit" value="Enviar">
 </form>
-<a href={{ url('/inicio') }}>voltar ao inicio</a>
+<a href={{ route('start') }}>voltar ao inicio</a>
