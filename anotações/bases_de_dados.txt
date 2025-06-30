@@ -1,0 +1,97 @@
+A base de dados clube vai será criada de foma manual mas será manipulada por migrations
+o exemplo que ue vou usar so vai ter uma tabela que seria a tabela de socios a entidade
+socio possui 
+- id_socio
+- nome 
+- telefone 
+- created_at (criado de forma automática ) 
+- updated_at (criado de forma automática ) 
+- deleted_at (criado de forma automática )
+
+a criação de campos de forma autamatica pelo framework serve parra manter um consisitenacia e controle de dados
+e esses campos so devem ser manipulados por ele.
+
+comunicação entre o laravel e a base pode ser configurada no aruivo ".env " funciona como um ini de configuração
+por conter dados sensiveis normalmente o .env fica no .gitignore para que os dados de conexão d base do porjeto não
+sejam expostos.por isso a configuração abaixo e generica so para conhecimento     
+
+DB_CONNECTION=mysql (driver a ser usado)
+DB_HOST=127.0.0.1   (ip do servidor)
+DB_PORT=3306        (numero da porta logica)
+DB_DATABASE=clube   (nome da base)
+DB_USERNAME=root    (usuario do banco)
+DB_PASSWORD=''      (senha)
+
+dentro da pasta config no arquivo database.php existe um array com varias configurações de conexões de bases 
+de dados diferentes, também é possivel configurar lá, mas configurar pelo .env é mais prático.
+
+MIGRATIONS 
+  Uma migration é gerada pelo comando abaixo o artisan recebe um comando make(fazer) uma migration 
+ 
+     php artisan make:migration create_socios_table 
+
+  vai ser gerada uma classe chamada schema que possui o metodo create que recebe 2 parametros até 
+  agora que seria o nome da tabela e uma função anonima que receb o objeto $table da classe  'Blueprint' 
+  nesse objeto table eu crio metodos que vão representar os campos da tabela, abaixo ele ja fez 2 
+  de exemplo o id() e o timestamps(), agora os outro quam faz sou eu. 
+
+  Schema::create('socios', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+  
+  para executar de fato a criação de uma tabela na base de dados tem que usar o comando 
+
+    php artisan migrate 
+
+  ATENÇÃO! esse comando vai fazer um scan nos arquivos da pasta migrations procurando por 
+           todas as funções up que serven para criar as tabelas, então se tiver mais de uma 
+           migration dentro da pasta ele vai gerar todas as tabelas na base de dados então 
+           é importante conferir essa pasta antes de executar esse comando, par não gerar tabelas
+           desnecessárias na base.     
+
+  ----------------------------------------------------------------------------------------------------------         
+            public function up(): void
+    {
+        Schema::create('socios', function (Blueprint $table) {
+
+            $table->id('id_socio');
+            $table->string('nome', 50);
+            $table->string('telefone', 20);
+            $table->timestamps();
+        });
+       }
+ -------------------------------------------------------------------------------      
+
+Depois desse comando serão cridas 2 tabelas 
+
+1 - socios que foi a tabela que pedi pra criar
+2 - migrations é uma atbela de historico criada pelo laravel pra controlar as migrations que faço e ter uma base
+    para fazer rollback se precisar.
+
+Alterando tabelas já criadas 
+   Depois que uma migration é executada ela não pode mais ser usada então por exemplo se eu qeuiser colocar mais um campo na minha tabela
+   vou precisar fazer um roolback pra desfazerr a migration que eu executei aplicando um comando de roolback.
+
+   php artisan migrate:rollback
+
+   depois disso tabela some e so fica as migrations na base de dados 
+
+Métodos de comunicação pra executar queries 
+  
+   
+   
+
+
+
+
+
+
+     
+        
+
+ 
+
+
+
+
